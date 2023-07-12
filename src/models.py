@@ -23,7 +23,7 @@ class Characters(db.Model):
     __tablename__ = 'characters'
     # Here we define db.Columns for the table address.
     # Notice that each db.Column is also a normal Python instance attribute.
-    charId = db.Column(db.Integer, primary_key=True)
+    char_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250))
     birth_date = db.Column(db.String(250))
     height = db.Column(db.Integer, primary_key=False)
@@ -35,7 +35,7 @@ class Planets(db.Model):
     __tablename__ = 'planets'
     # Here we define db.Columns for the table address.
     # Notice that each db.Column is also a normal Python instance attribute.
-    planetId = db.Column(db.Integer, primary_key=True)
+    planet_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250))
     population = db.Column(db.Integer, primary_key=False)
     diameter = db.Column(db.Integer, primary_key=False)
@@ -48,7 +48,7 @@ class Ships(db.Model):
     __tablename__ = 'ships'
     # Here we define db.Columns for the table address.
     # Notice that each db.Column is also a normal Python instance attribute.
-    shipId = db.Column(db.Integer, primary_key=True)
+    ship_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250))
     model = db.Column(db.String(250))
     max_speed = db.Column(db.Integer, primary_key=False)
@@ -57,32 +57,22 @@ class Ships(db.Model):
 
 class CharacterFavorites(db.Model):
     __tablename__ = 'favorites'
-    # Here we define db.Columns for the table person
-    # Notice that each db.Column is also a normal Python instance attribute.
+   
     id = db.Column(db.Integer, primary_key=True)
-    charId = db.Column(db.Integer, db.ForeignKey('characters.id'))
-    # planetId = db.Column(db.Integer, db.ForeignKey('planets.id'))
-    # shipId = db.Column(db.Integer, db.ForeignKey('ships.id'))
+    char_id = db.Column(db.Integer, db.ForeignKey('characters.id'))
+   
     user = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class PlanetsFavorites(db.Model):
     __tablename__ = 'favorites'
-    # Here we define db.Columns for the table person
-    # Notice that each db.Column is also a normal Python instance attribute.
     id = db.Column(db.Integer, primary_key=True)
-    # charId = db.Column(db.Integer, db.ForeignKey('characters.id'))
-    planetId = db.Column(db.Integer, db.ForeignKey('planets.id'))
-    # shipId = db.Column(db.Integer, db.ForeignKey('ships.id'))
+    planet_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
     user = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class ShipsFavorites(db.Model):
     __tablename__ = 'favorites'
-    # Here we define db.Columns for the table person
-    # Notice that each db.Column is also a normal Python instance attribute.
     id = db.Column(db.Integer, primary_key=True)
-    # charId = db.Column(db.Integer, db.ForeignKey('characters.id'))
-    # planetId = db.Column(db.Integer, db.ForeignKey('planets.id'))
-    shipId = db.Column(db.Integer, db.ForeignKey('ships.id'))
+    ship_id = db.Column(db.Integer, db.ForeignKey('ships.id'))
     user = db.Column(db.Integer, db.ForeignKey('user.id'))
     
 #     def to_dict(self):
@@ -90,9 +80,6 @@ class ShipsFavorites(db.Model):
 
 # ## Draw from SQLAlchemy db.Model
 # render_er(db.Model, 'diagram.png')
-
-
-# # person_id = db.Column(db.Integer, db.ForeignKey('person.id'))
 
 def __repr__(self):
         return '<User %r>' % self.username
@@ -107,4 +94,4 @@ def serialize(self):
         
 
 
-        import os
+import os
