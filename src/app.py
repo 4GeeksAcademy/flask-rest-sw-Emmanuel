@@ -46,6 +46,16 @@ def getUsers():
     }
     return jsonify(response_body), 200
 
+@app.route('/users/favorites', methods=['GET'])
+def getUsersFav():
+    favoriteChar = CharacterFavorites.query.all()
+    favoriteChar = CharacterFavorites.query.all()
+    favoriteChar = CharacterFavorites.query.all()
+    response_body = {
+        "msg": "Hello, this is your GET /user response "
+    }
+    return jsonify(response_body), 200
+
 @app.route('/users', methods=['POST'])
 def postUsers():
 
@@ -128,20 +138,18 @@ def getOneShip(ship_id):
     else:
         return jsonify({'message': 'Planet not found'}), 404
 
-@app.route('/users/favorites', methods=['GET'])
-def getFavorites():
-    favoriteChar = CharacterFavorites.query.all()
-    favoriteChar = CharacterFavorites.query.all()
-    favoriteChar = CharacterFavorites.query.all()
-    response_body = {
-        "msg": "Hello, this is your GET /user response "
-    }
+# @app.route('/users/favorites', methods=['GET'])
+# def getFavorites():
+    
+#     response_body = {
+#         "msg": "Hello, this is your GET /user response "
+#     }
 
-    return jsonify(response_body), 200
+#     return jsonify(response_body), 200
 
 
 @app.route('/favorite/people/<int:people_id>', methods=['POST'])
-def getFavorites():
+def getFavorites(people_id):
     
     response_body = {
         "msg": "Hello, this is your GET /user response "
@@ -150,7 +158,7 @@ def getFavorites():
     return jsonify(response_body), 200
 
 @app.route('/favorite/planet/<int:planet_id>', methods=['POST'])
-def getFavorites():
+def getFavorites(planet_id):
     
     response_body = {
         "msg": "Hello, this is your GET /user response "
@@ -159,7 +167,34 @@ def getFavorites():
     return jsonify(response_body), 200
 
 @app.route('/favorite/ships/<int:ship_id>', methods=['POST'])
-def getFavorites():
+def getFavorites(ship_id):
+    
+    response_body = {
+        "msg": "Hello, this is your GET /user response "
+    }
+
+    return jsonify(response_body), 200
+
+@app.route('/favorite/people/<int:people_id>', methods=['DELETE'])
+def deleteFavorites(people_id):
+    
+    response_body = {
+        "msg": "Hello, this is your GET /user response "
+    }
+
+    return jsonify(response_body), 200
+
+@app.route('/favorite/planet/<int:planet_id>', methods=['DELETE'])
+def deleteFavorites(planet_id):
+    
+    response_body = {
+        "msg": "Hello, this is your GET /user response "
+    }
+
+    return jsonify(response_body), 200
+
+@app.route('/favorite/ships/<int:ship_id>', methods=['DELETE'])
+def deleteFavorites(ship_id):
     
     response_body = {
         "msg": "Hello, this is your GET /user response "
