@@ -34,7 +34,7 @@ class Planets(db.Model):
     diameter = db.Column(db.Integer, primary_key=False)
     climate = db.Column(db.String(250))
     gravity = db.Column(db.String(250))
-    terrin = db.Column(db.String(250))
+    terrain = db.Column(db.String(250))
 
 
 class Ships(db.Model):
